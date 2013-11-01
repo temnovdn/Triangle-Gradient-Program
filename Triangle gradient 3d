@@ -10,11 +10,32 @@ import math
 # FUNCTIONS AREA
 #
 
-# Let's assign apexes coordinates
+# Function, transferring coordinates x,y, and z to colour.
 
-R = {'x':1.0, 'y':0.0, 'z':0.0}
-G = {'x':0.0, 'y':1.0, 'z':0.0}
-B = {'x':0.0, 'y':0.0, 'z':1.0}
+def colour(x,y,z):
+    """colour(float,float,float) -> hex
+
+    Returns RGB code for triangle gradient point with coordinates x,y and z.
+
+    >>>colour(R['x'],0,0)
+    'FF0000'
+    """
+    percent_R = x / R['x']
+    percent_G = y / G['y']
+    percent_B = z / B['z']
+
+    code_R = hex(round(256 * percent_R))
+    code_G = hex(round(256 * percent_G))
+    code_B = hex(round(256 * percent_B))
+
+    RGB = code_R * 32 + code_G * 8 + code_B
+    return RGB
+    
+# Let's assign apexes coordinates and colours
+
+R = {'x':100.0, 'y':0.0, 'z':0.0, 'c':0}
+G = {'x':0.0, 'y':100.0, 'z':0.0, 'c':0}
+B = {'x':0.0, 'y':0.0, 'z':100.0, 'c':0}
 
 # The coefficients in plane formula Ax+By+Cz+D=0 for plane, containing all 3 apexes 
 
@@ -22,3 +43,22 @@ A_plane = R['y'] * (G['z'] - B['z']) + G['y'] * (B['z'] - R['z']) + B['y'] * (R[
 B_plane = R['z'] * (G['x'] - B['x']) + G['z'] * (B['x'] - R['x']) + B['z'] * (R['x'] - G['x'])
 C_plane = R['x'] * (G['y'] - B['y']) + G['x'] * (B['y'] - R['y']) + B['x'] * (R['y'] - G['y'])
 D_plane = -(R['x'] * (G['y'] * B['z'] - B['y'] * G['z']) + G['x'] * (B['y'] * R['z'] - R['y'] *B['z']) + B['x'] * (R['y'] * G['z'] - G['y'] * R['z']))
+
+# Creating the massive of points of triangle
+
+##points = []
+##
+##x = 0
+##y = 0
+##z = 0
+##
+##for x in range(0, int(R['x']), 1):
+##    for y in range(0, int(R['x']), 1):
+##        for z in range(0, int(R['x']), 1):
+##            if A_plane * x + B_plane * y + C_plane * z + D_plane == 0:
+##                colour = colour(x,y,z)
+##                point = {'x':x, 'y':y, 'z':z}
+##                points.append(point)
+
+
+                
