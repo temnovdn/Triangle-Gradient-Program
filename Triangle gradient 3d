@@ -1,0 +1,24 @@
+# This program will draw a triangle gradient.
+
+# Triangle gradient is an equilateral triangle with apexes called R G and
+# B (symbolise the colours)and filled with Red Green and Blue gradients between apexes.
+
+# Imports area
+import math
+
+# 
+# FUNCTIONS AREA
+#
+
+# Let's assign apexes coordinates
+
+R = {'x':1.0, 'y':0.0, 'z':0.0}
+G = {'x':0.0, 'y':1.0, 'z':0.0}
+B = {'x':0.0, 'y':0.0, 'z':1.0}
+
+# The coefficients in plane formula Ax+By+Cz+D=0 for plane, containing all 3 apexes 
+
+A_plane = R['y'] * (G['z'] - B['z']) + G['y'] * (B['z'] - R['z']) + B['y'] * (R['z'] - G['z'])
+B_plane = R['z'] * (G['x'] - B['x']) + G['z'] * (B['x'] - R['x']) + B['z'] * (R['x'] - G['x'])
+C_plane = R['x'] * (G['y'] - B['y']) + G['x'] * (B['y'] - R['y']) + B['x'] * (R['y'] - G['y'])
+D_plane = -(R['x'] * (G['y'] * B['z'] - B['y'] * G['z']) + G['x'] * (B['y'] * R['z'] - R['y'] *B['z']) + B['x'] * (R['y'] * G['z'] - G['y'] * R['z']))
